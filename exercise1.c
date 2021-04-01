@@ -11,20 +11,20 @@ void printArray(char array[], int tam)
         printf("%c\t", array[i]);
     }
     printf("\n");
-
 }
 
-
-
-void insercao(char vet[], int tam)
+// if crescente == 1 --> ordena crescente
+// if crescente == -1 --> ordena decrescente
+void insercao(char vet[], int tam, int decrescente)
 {
+
     int i, j;
     char x;
     for (i = 1; i < tam; i++)
     {
         x = vet[i];
         j = i - 1;
-        while (j>=0 && strcmp(&x, &vet[j]) < 0)
+        while (j >= 0 && ((strcmp(&x, &vet[j])*decrescente) < 0))
         {
             vet[j + 1] = vet[j];
             j--;
@@ -52,8 +52,12 @@ int main()
             values[j] = value;
         }
 
+        printf("Imprimindo na ordem que foi digitado:\n");
         printArray(values, tamArray);
-        insercao(values, tamArray);
+        printf("Imprimindo na ordem crescente: \n");
+        insercao(values, tamArray, 1); //ordem crescente
+        printf("Imprimindo na ordem decrescente: \n");
+        insercao(values, tamArray, -1); //ordem decrescente
     }
 
 }
